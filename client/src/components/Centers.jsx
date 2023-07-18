@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, Select } from 'antd';
+import { Form, Input, Button, Select, Card } from 'antd';
 
 const { Option } = Select;
 
@@ -10,22 +10,22 @@ const Centers = () => {
 
   return (
     <div>
-      <h2>Create a New Center</h2>
-      <div style={{ width: "25%" }}>
+      <Card style={{ width: "30%", boxShadow: "0px 0px 10px #ddd" }}>
         <Form onFinish={onFinish} layout="vertical">
+          <div style={{ fontSize: 22, fontWeight: "bold", marginBottom: 20 }}>Crear nuevo centro</div>
           <Form.Item
-            label="Center Name"
+            label="Nombre"
             name="name"
-            rules={[{ required: true, message: 'Please enter the center name' }]}
+            rules={[{ required: true, message: 'Porfavor introduce el nombre del centro' }]}
           >
-            <Input placeholder="Enter center name" />
+            <Input placeholder="Introduce el nombre del centro" />
           </Form.Item>
           <Form.Item
-            label="Center Type"
+            label="Tipo"
             name="type"
-            rules={[{ required: true, message: 'Please select the center type' }]}
+            rules={[{ required: true, message: 'Porfavor selecciona el tipo de centro' }]}
           >
-            <Select placeholder="Select center type">
+            <Select placeholder="Selecciona el tipo de centro">
               <Option value="standard">Standard</Option>
               <Option value="premium">Premium</Option>
               <Option value="trial">Trial</Option>
@@ -37,7 +37,7 @@ const Centers = () => {
             </Button>
           </Form.Item>
         </Form>
-      </div>
+      </Card>
     </div>
   );
 };

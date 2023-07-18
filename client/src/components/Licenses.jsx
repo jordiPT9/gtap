@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, Select } from 'antd';
+import { Form, Input, Button, Select, Card } from 'antd';
 
 const { Option } = Select;
 
@@ -10,22 +10,23 @@ const Licenses = () => {
 
   return (
     <div>
-      <h2>Create a New License</h2>
-      <div style={{ width: "25%" }}>
+      <Card style={{ width: "30%", boxShadow: "0px 0px 10px #ddd" }}>
+        <div style={{ fontSize: 22, fontWeight: "bold", marginBottom: 20 }}>Crear nueva licencia</div>
+
         <Form onFinish={onFinish} layout="vertical">
           <Form.Item
-            label="License Name:"
+            label="Nombre"
             name="name"
-            rules={[{ required: true, message: 'Please enter the license name' }]}
+            rules={[{ required: true, message: 'Porfavor introduce el nombre de la licencia' }]}
           >
-            <Input placeholder="Enter license name" />
+            <Input placeholder="Introduce el nombre de la licencia" />
           </Form.Item>
           <Form.Item
-            label="License Type:"
+            label="Tipo"
             name="type"
-            rules={[{ required: true, message: 'Please select the license type' }]}
+            rules={[{ required: true, message: 'Porfavor selecciona el tipo de la licencia' }]}
           >
-            <Select placeholder="Select license type">
+            <Select placeholder="Selecciona el tipo de licencia">
               <Option value="standard">Standard</Option>
               <Option value="premium">Premium</Option>
               <Option value="trial">Trial</Option>
@@ -37,7 +38,7 @@ const Licenses = () => {
             </Button>
           </Form.Item>
         </Form>
-      </div>
+      </Card>
     </div>
   );
 };
