@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import Licenses from '../components/Licenses';
+import Licenses from '../components/Licenses/Licenses';
 import Centers from '../components/Centers/Centers';
 import ZoneCreation from '../components/ZoneCreation';
 import ZoneListing from '../components/ZoneListing';

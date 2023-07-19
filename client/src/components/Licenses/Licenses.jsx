@@ -3,7 +3,7 @@ import { Form, Input, Button, InputNumber, Table, Modal } from 'antd';
 import { FcCancel } from 'react-icons/fc';
 import { AiTwotoneEdit } from 'react-icons/ai';
 
-import styles from './Centers.module.css';
+import styles from './Licenses.module.css';
 
 const initialDataSource = [
   {
@@ -36,7 +36,7 @@ const initialDataSource = [
   },
 ];
 
-const Centers = () => {
+const Licenses = () => {
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [dataSource, setDataSource] = useState(initialDataSource);
 
@@ -97,10 +97,10 @@ const Centers = () => {
       align: 'center',
       render: (text, record) => {
         return (
-          <>
-            <AiTwotoneEdit style={{ color: "orange", fontSize: 20, marginRight: 10 }} />
-            <FcCancel style={{ color: "orange", fontSize: 20 }} />
-          </>
+          <div>
+            <AiTwotoneEdit style={{ color: "orange", fontSize: 20, marginRight:10 }} />
+            <FcCancel style={{ color: "orange", fontSize: 20 }}/>
+          </div>
         )
       }
     },
@@ -164,4 +164,4 @@ const Centers = () => {
   );
 };
 
-export default Centers;
+export default Licenses;
