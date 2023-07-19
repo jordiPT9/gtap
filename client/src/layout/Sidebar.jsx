@@ -1,11 +1,11 @@
-import React from 'react';
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
+import styles from './Sidebar.module.css'
 
 const Sidebar = ({ sections, title }) => {
   return (
     <>
-      <h2 style={{ display: "flex", justifyContent: "center", color: "white" }}>{title}</h2>
+      <h2 className={styles.title}>{title}</h2>
       <Menu theme="dark" mode="inline">
         {sections.map((item) => {
           if (item.subSections) {

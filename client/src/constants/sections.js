@@ -1,8 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-
-import React from 'react';
 import Licenses from '../components/Licenses';
-import Centers from '../components/Centers';
+import Centers from '../components/Centers/Centers';
 import ZoneCreation from '../components/ZoneCreation';
 import ZoneListing from '../components/ZoneListing';
 

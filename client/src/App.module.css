@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: #000c17;
+}
+
+.layout {
+  height: 100vh;
+}
+
+.sider {
+  width: 250px;
+}
+
+.content {
+  padding: 20px;
+  background-color: #eee;
+}
