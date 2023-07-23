@@ -1,44 +1,53 @@
 import { useState } from 'react';
-import { Form, Input, Button, InputNumber, Table, Modal } from 'antd';
+import { Form, Input, Button, InputNumber, Table, Modal, Tooltip, Tag } from 'antd';
 import { FcCancel } from 'react-icons/fc';
 import { AiTwotoneEdit } from 'react-icons/ai';
+import { MdTraffic, MdCarCrash, MdDoNotDisturbOn } from "react-icons/md";
+import { FaTruck } from "react-icons/fa";
 
 import styles from './Centers.module.css';
 
-const initialDataSource = [
+const initialCenterList = [
   {
     key: '0',
     id: 0,
     name: 'Nexotech',
     logo: "https://bitcloud.com/olesa.png",
-    marginDays: 5
+    marginDays: 5,
+    modules: ["ZAR", "RED_LIGHT", "OPPOSITE_DIRECTION", "GAUGE_CONTROL"]
   },
   {
     key: '1',
     id: 1,
     name: 'Torello',
     logo: "https://bitcloud.com/olesa.png",
-    marginDays: 5
+    marginDays: 5,
+    modules: ["ZAR", "RED_LIGHT", "OPPOSITE_DIRECTION", "GAUGE_CONTROL"]
+
   },
   {
     key: '2',
     id: 2,
     name: 'Vic',
     logo: "https://bitcloud.com/olesa.png",
-    marginDays: 5
+    marginDays: 5,
+    modules: ["ZAR", "RED_LIGHT", "OPPOSITE_DIRECTION", "GAUGE_CONTROL"]
+
   },
   {
     key: '3',
     id: 3,
     name: 'Olesa',
     logo: "https://bitcloud.com/olesa.png",
-    marginDays: 5
+    marginDays: 5,
+    modules: ["ZAR", "RED_LIGHT", "OPPOSITE_DIRECTION", "GAUGE_CONTROL"]
+
   },
 ];
 
 const Centers = () => {
   const [isModalOpened, setIsModalOpened] = useState(false);
-  const [dataSource, setDataSource] = useState(initialDataSource);
+  const [centerList, setCenterList] = useState(initialCenterList);
 
   const showModal = () => {
     setIsModalOpened(true);
@@ -52,14 +61,14 @@ const Centers = () => {
     console.log('Submitted values:', values);
 
     const newCenter = {
-      key: dataSource.length.toString(),
-      id: dataSource.length,
+      key: centerList.length.toString(),
+      id: centerList.length,
       name: values.name,
       logo: values.logo,
       marginDays: values.marginDays,
     };
 
-    setDataSource([...dataSource, newCenter]);
+    setCenterList([...centerList, newCenter]);
 
     setIsModalOpened(false);
   };
@@ -69,7 +78,7 @@ const Centers = () => {
       title: 'Identificador',
       dataIndex: 'id',
       key: 'id',
-      align: 'center',
+      align: 'center'
     },
     {
       title: 'Nombre',
@@ -78,11 +87,58 @@ const Centers = () => {
       align: 'center',
     },
     {
+      title: 'Módulos',
+      dataIndex: 'modules',
+      key: 'modules',
+      align: 'center',
+      render: (text, record) => {
+        return (
+          <span style={{ display: "flex", justifyContent: "center" }}>
+            {text.map(type => {
+              switch (type) {
+                case "ZAR":
+                  return (
+                    <Tooltip title={type}>
+                      <Tag color="geekblue" key={type.id}>
+                        <MdCarCrash style={{ verticalAlign: "sub", fontSize: "26", }} />
+                      </Tag>
+                    </Tooltip>
+                  );
+                case "RED_LIGHT":
+                  return (
+                    <Tooltip title={type}>
+                      <Tag color="red" key={type.id}>
+                        <MdTraffic style={{ verticalAlign: "sub", fontSize: "26", }} />
+                      </Tag>
+                    </Tooltip>
+                  );
+                case "OPPOSITE_DIRECTION":
+                  return (
+                    <Tooltip title={type}>
+                      <Tag color="orange" key={type.id}>
+                        <MdDoNotDisturbOn style={{ verticalAlign: "sub", fontSize: "26", }} />
+                      </Tag>
+                    </Tooltip>
+                  );
+                case "GAUGE_CONTROL":
+                  return (
+                    <Tooltip title={type}>
+                      <Tag color="lime" key={type.id}>
+                        <FaTruck style={{ verticalAlign: "sub", fontSize: "26", }} />
+                      </Tag>
+                    </Tooltip>
+                  );
+              }
+            })}
+          </span>
+        )
+      }
+    },
+    {
       title: 'Logo',
       dataIndex: 'logo',
       key: 'logo',
       align: 'center',
-
     },
     {
       title: 'Días de margen',
@@ -94,7 +150,6 @@ const Centers = () => {
       title: 'Acciones',
       dataIndex: 'actions',
       key: 'actions',
-      align: 'center',
       render: (text, record) => {
         return (
           <>
@@ -115,7 +170,7 @@ const Centers = () => {
       </div>
 
       <Table
-        dataSource={dataSource}
+        dataSource={centerList}
         columns={columns}
         size={"large"}
         pagination={false}
@@ -150,7 +205,7 @@ const Centers = () => {
             name="marginDays"
             rules={[{ required: true, message: 'Porfavor introduce los días de margen' }]}
           >
-            <InputNumber min={1} max={10} defaultValue={0} placeholder="Introduce los dias de margen" />
+            <InputNumber min={0} max={10} defaultValue={0} placeholder="Introduce los dias de margen" />
           </Form.Item>
 
           <Form.Item>
