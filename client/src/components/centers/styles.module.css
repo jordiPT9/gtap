@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.table {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.moduleColumn {
+  display: flex;
+  justify-content: center;
+}
+
+.moduleIcon {
+  vertical-align: middle;
+  font-size: 26px;
+}
+
+.createButton {
+  background-color: limegreen;
+}
+
+.createButton:hover {
+  background-color: rgb(56, 228, 56) !important;
+}
+
+.editIcon {
+  color: orange;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.cancelIcon {
+  color: orange;
+  font-size: 20px;
+}

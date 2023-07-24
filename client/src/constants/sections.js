@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-import Licenses from '../components/Licenses/Licenses';
-import Centers from '../components/Centers/Centers';
+import Licenses from '../components/licenses/index';
+import Centers from '../components/centers/index';
 import ZoneCreation from '../components/ZoneCreation';
 import ZoneListing from '../components/ZoneListing';
 
@@ -32,15 +32,15 @@ const lprconnectSections = [
 ];
 
 const nexocountSections = [
-  { key: uuidv4(), title: 'Licencias', link: '/nexocount/licenses', icon: <FcAdvertising />, element: <Licenses /> },
-  { key: uuidv4(), title: 'Centros', link: '/nexocount/centers', icon: <FcAdvertising />, element: <Licenses /> },
+  { key: uuidv4(), title: 'Licencias', link: '/nexocount/licenses', icon: <FcAdvertising />, element: <Centers /> },
+  { key: uuidv4(), title: 'Centros', link: '/nexocount/centers', icon: <FcAdvertising />, element: <Centers /> },
   {
     key: uuidv4(),
     title: 'Zonas',
     icon: <FcAdvertising />,
     subSections: [
-      { key: uuidv4(), title: 'Creación', link: '/nexocount/zones/creation', icon: <FcAdvertising />, element: <Licenses /> },
-      { key: uuidv4(), title: 'Listado', link: '/nexocount/zones/listing', icon: <FcAdvertising />, element: <Licenses /> },
+      { key: uuidv4(), title: 'Creación', link: '/nexocount/zones/creation', icon: <FcAdvertising />, element: <Centers /> },
+      { key: uuidv4(), title: 'Listado', link: '/nexocount/zones/listing', icon: <FcAdvertising />, element: <Centers /> },
     ],
   },
   {
@@ -48,8 +48,8 @@ const nexocountSections = [
     title: 'Salas',
     icon: <FcAdvertising />,
     subSections: [
-      { key: uuidv4(), title: 'Creación', link: '/nexocount/rooms/creation', icon: <FcAdvertising />, element: <Licenses /> },
-      { key: uuidv4(), title: 'Listado', link: '/nexocount/rooms/listing', icon: <FcAdvertising />, element: <Licenses /> },
+      { key: uuidv4(), title: 'Creación', link: '/nexocount/rooms/creation', icon: <FcAdvertising />, element: <Centers /> },
+      { key: uuidv4(), title: 'Listado', link: '/nexocount/rooms/listing', icon: <FcAdvertising />, element: <Centers /> },
     ],
   },
   {
@@ -57,8 +57,8 @@ const nexocountSections = [
     title: 'Sensores',
     icon: <FcAdvertising />,
     subSections: [
-      { key: uuidv4(), title: 'Creación', link: '/nexocount/sensors/creation', icon: <FcAdvertising />, element: <Licenses /> },
-      { key: uuidv4(), title: 'Listado', link: '/nexocount/sensors/listing', icon: <FcAdvertising />, element: <Licenses /> },
+      { key: uuidv4(), title: 'Creación', link: '/nexocount/sensors/creation', icon: <FcAdvertising />, element: <Centers /> },
+      { key: uuidv4(), title: 'Listado', link: '/nexocount/sensors/listing', icon: <FcAdvertising />, element: <Centers /> },
     ],
   },
 ];
