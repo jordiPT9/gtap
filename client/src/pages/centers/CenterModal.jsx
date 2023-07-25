@@ -1,5 +1,6 @@
 import React from 'react';
-import { Modal, Form, Input, InputNumber, Button } from 'antd';
+import { Modal, Form, Input, InputNumber } from 'antd';
+import { Button } from '../../components/Button';
 import styles from './styles.module.css';
 
 export const CenterModal = ({ visible, onCancel, onFinish }) => {
@@ -31,12 +32,13 @@ export const CenterModal = ({ visible, onCancel, onFinish }) => {
           label="Días de margen"
           name="marginDays"
           rules={[{ required: true, message: 'Por favor introduce los días de margen' }]}
+          initialValue={0}
         >
-          <InputNumber min={0} max={10} defaultValue={0} placeholder="Introduce los días de margen" />
+          <InputNumber min={0} max={10} placeholder="Introduce los días de margen" />
         </Form.Item>
 
-        <Form.Item>
-          <Button type="primary" htmlType="submit" className={styles.createButton}>
+        <Form.Item className={styles.modalButtonsWrapper}>
+          <Button color={"limegreen"} htmlType="submit">
             Crear
           </Button>
         </Form.Item>

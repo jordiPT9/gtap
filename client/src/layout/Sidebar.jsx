@@ -2,31 +2,38 @@ import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
 import styles from './Sidebar.module.css'
 
+
 const Sidebar = ({ sections, title }) => {
+  const menuItems = () => {
+    return sections.map(section => {
+      if (section.subSections) {
+        const children = section.subSections.map(subSection => {
+          return {
+            label: <Link to={subSection.link}>{subSection.title}</Link>,
+            key: subSection.key,
+            icon: subSection.icon,
+          }
+        });
+
+        return {
+          key: section.key,
+          icon: section.icon,
+          label: section.title,
+          children
+        }
+      } else {
+        return {
+          label: <Link to={section.link}>{section.title}</Link>,
+          key: section.key,
+          icon: section.icon,
+        }
+      }
+    });
+  }
   return (
     <>
       <h2 className={styles.title}>{title}</h2>
-      <Menu theme="dark" mode="inline">
-        {sections.map((item) => {
-          if (item.subSections) {
-            return (
-              <Menu.SubMenu key={item.key} title={item.title} icon={item.icon}>
-                {item.subSections.map((subItem) => (
-                  <Menu.Item key={subItem.key} icon={subItem.icon}>
-                    <Link to={subItem.link}>{subItem.title}</Link>
-                  </Menu.Item>
-                ))}
-              </Menu.SubMenu>
-            );
-          } else {
-            return (
-              <Menu.Item key={item.key} icon={item.icon}>
-                <Link to={item.link}>{item.title}</Link>
-              </Menu.Item>
-            );
-          }
-        })}
-      </Menu>
+      <Menu theme="dark" mode="inline" items={menuItems()} />
     </>
   );
 };

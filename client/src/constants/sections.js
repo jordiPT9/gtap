@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
-import Licenses from '../components/licenses/index';
-import Centers from '../components/centers/index';
-import ZoneCreation from '../components/ZoneCreation';
-import ZoneListing from '../components/ZoneListing';
+import Licenses from '../pages/licenses/index';
+import Centers from '../pages/centers/index';
+import ZoneCreation from '../pages/zoneCreation/index';
+import ZoneListing from '../pages/zoneListing/index';
 
 import { FcAdvertising, FcDepartment, FcCamcorderPro, FcFlowChart, FcKey, FcPlus, FcList } from 'react-icons/fc';
 

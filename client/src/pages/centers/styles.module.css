@@ -26,21 +26,33 @@
   font-size: 26px;
 }
 
-.createButton {
-  background-color: limegreen;
-}
-
-.createButton:hover {
-  background-color: rgb(56, 228, 56) !important;
+.actionIconsWrapper {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
 }
 
 .editIcon {
   color: orange;
-  font-size: 20px;
-  margin-right: 10px;
+  font-size: 25px;
+}
+
+.editIcon:hover {
+  color: rgb(255, 196, 86);
+  cursor: pointer;
 }
 
 .cancelIcon {
-  color: orange;
-  font-size: 20px;
+  color: rgb(255, 0, 0);
+  font-size: 25px;
+}
+
+.cancelIcon:hover {
+  color: rgb(255, 59, 59);
+  cursor: pointer;
+}
+
+.modalButtonsWrapper {
+  display: flex;
+  justify-content: right;
 }

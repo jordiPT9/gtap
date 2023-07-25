@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from 'antd';
 import { ModuleTag } from './ModuleTag';
 import { AiTwotoneEdit } from 'react-icons/ai';
-import { FcCancel } from 'react-icons/fc';
+import { TiDelete } from 'react-icons/ti';
 import styles from './styles.module.css';
 
 export const CenterTable = ({ centers }) => {
@@ -48,12 +48,13 @@ export const CenterTable = ({ centers }) => {
       title: 'Acciones',
       dataIndex: 'actions',
       key: 'actions',
+      align: 'center',
       render: (text, record) => {
         return (
-          <>
+          <div className={styles.actionIconsWrapper}>
             <AiTwotoneEdit className={styles.editIcon} />
-            <FcCancel className={styles.cancelIcon} />
-          </>
+            <TiDelete className={styles.cancelIcon} />
+          </div>
         )
       }
     },
