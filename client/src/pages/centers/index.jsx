@@ -1,18 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useModal } from '../../hooks/useModal'
 import { Button } from '../../components/Button';
 import { CenterTable } from './CenterTable';
 import { CenterModal } from './CenterModal';
-import { initialCenters } from '../../constants/centersData'
+import { postCenter, getCenters } from '../../services/CenterService'
 import styles from './styles.module.css';
 
 const Centers = () => {
-  const [centers, setCenters] = useState(initialCenters);
+  const [centers, setCenters] = useState([]);
   const { isModalOpened, openModal, closeModal } = useModal();
 
-  const submitValues = (values) => {
-    console.log('Submitted values:', values);
+  useEffect(() => {
+    updateTable();
+  }, []);
 
+  const updateTable = async () => {
+    const centers = await getCenters();
+    setCenters(centers);
+  }
+
+  const submitValues = async (values) => {
     const newCenter = {
       key: centers.length.toString(),
       id: centers.length,
@@ -22,7 +29,9 @@ const Centers = () => {
       modules: []
     };
 
-    setCenters([...centers, newCenter]);
+    await postCenter(newCenter);
+
+    updateTable();
     closeModal();
   };
 
