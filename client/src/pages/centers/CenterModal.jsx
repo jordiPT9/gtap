@@ -3,7 +3,7 @@ import { Modal, Form, Input, InputNumber } from 'antd';
 import { Button } from '../../components/Button';
 import styles from './styles.module.css';
 
-export const CenterModal = ({ visible, onCancel, onFinish }) => {
+export const CenterModal = ({ visible, title, onCancel, onFinish }) => {
   return (
     <Modal
       open={visible}
@@ -11,7 +11,7 @@ export const CenterModal = ({ visible, onCancel, onFinish }) => {
       footer={null}
     >
       <Form onFinish={onFinish} layout="vertical">
-        <div className={styles.title}>Crear nuevo centro</div>
+        <div className={styles.modalTitle}>{title}</div>
         <Form.Item
           label="Nombre"
           name="name"
@@ -21,7 +21,7 @@ export const CenterModal = ({ visible, onCancel, onFinish }) => {
         </Form.Item>
 
         <Form.Item
-          label="Logo"
+          label="Url logo"
           name="logo"
           rules={[{ required: true, message: 'Por favor introduce la URL del logo' }]}
         >

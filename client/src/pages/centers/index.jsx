@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useModal } from '../../hooks/useModal'
+import { v4 as uuid } from 'uuid';
 import { Button } from '../../components/Button';
 import { CenterTable } from './CenterTable';
 import { CenterModal } from './CenterModal';
@@ -15,21 +16,31 @@ const Centers = () => {
   }, []);
 
   const updateTable = async () => {
-    const centers = await getCenters();
+    let centers = [];
+    
+    try {
+      centers = await getCenters();
+    } catch (error) {
+      console.log(error);
+    }
+
     setCenters(centers);
   }
 
   const submitValues = async (values) => {
     const newCenter = {
-      key: centers.length.toString(),
-      id: centers.length,
+      id: uuid(),
       name: values.name,
       logo: values.logo,
       marginDays: values.marginDays,
       modules: []
     };
 
-    await postCenter(newCenter);
+    try {
+      await postCenter(newCenter);
+    } catch (error) {
+      console.log(error);
+    }
 
     updateTable();
     closeModal();
@@ -38,7 +49,7 @@ const Centers = () => {
   return (
     <div className={styles.wrapper}>
       <div>
-        <Button color={"limegreen"} onClick={openModal}>
+        <Button color="limegreen" onClick={openModal}>
           Crear Centro
         </Button>
       </div>
@@ -47,6 +58,7 @@ const Centers = () => {
 
       <CenterModal
         visible={isModalOpened}
+        title="Crear nuevo centro"
         onCancel={closeModal}
         onFinish={submitValues}
       />

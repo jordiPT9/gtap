@@ -27,9 +27,9 @@ export const CenterTable = ({ centers }) => {
       align: 'center',
       render: (columnValue, record) => {
         return (
-          <span className={styles.moduleColumn}>
+          <div>
             {columnValue.map(type => <ModuleTag type={type} key={type} />)}
-          </span>
+          </div>
         )
       }
     },
@@ -52,7 +52,7 @@ export const CenterTable = ({ centers }) => {
       align: 'center',
       render: (text, record) => {
         return (
-          <div className={styles.actionIconsWrapper}>
+          <div className={styles.actionIconWrapper}>
             <AiTwotoneEdit className={styles.editIcon} />
             <TiDelete className={styles.cancelIcon} />
           </div>
@@ -74,31 +74,32 @@ export const CenterTable = ({ centers }) => {
 
 const ModuleTag = ({ type }) => {
   let title, tagColor, icon;
+  const style = { verticalAlign: "middle", fontSize: 26 }
 
   switch (type) {
     case "ZAR":
       title = "Módulo Illa Vianants";
       tagColor = "geekblue";
-      icon = <MdCarCrash className={styles.moduleIcon} />
+      icon = <MdCarCrash style={style} />
       break;
     case "RED_LIGHT":
       title = "Módulo Foto Rojo";
       tagColor = "red";
-      icon = <MdTraffic className={styles.moduleIcon} />
+      icon = <MdTraffic style={style} />
       break;
     case "OPPOSITE_DIRECTION":
       title = "Módulo Direccion Contraria";
       tagColor = "orange";
-      icon = <MdDoNotDisturbOn className={styles.moduleIcon} />
+      icon = <MdDoNotDisturbOn style={style} />
       break;
     case "GAUGE_CONTROL":
       title = "Módulo Control Gálibo";
       tagColor = "green";
-      icon = <FaTruck className={styles.moduleIcon} />
+      icon = <FaTruck style={style} />
       break;
     default:
       tagColor = "lightgray";
-      icon = <MdQuestionMark className={styles.moduleIcon} />;
+      icon = <MdQuestionMark style={style} />;
       break;
   };
 

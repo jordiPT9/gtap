@@ -1,4 +1,4 @@
-export const initialCenters = [
+export const centersStaticData = [
     {
       key: '0',
       id: 0,

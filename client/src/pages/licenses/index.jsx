@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import { Form, Input, Button, Table, Modal } from 'antd';
 import { FcCancel } from 'react-icons/fc';
 import { AiTwotoneEdit } from 'react-icons/ai';
 
 import styles from './styles.module.css';
+import { useModal } from '../../hooks/useModal';
 
 const initialLicenses = [
   {
@@ -29,29 +29,11 @@ const initialLicenses = [
 ];
 
 const Licenses = () => {
-  const [isModalOpened, setIsModalOpened] = useState(false);
-  const [licenses, setLicenses] = useState(initialLicenses);
-
-  const showModal = () => {
-    setIsModalOpened(true);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpened(false);
-  };
+  const { isModalOpened, openModal, closeModal } = useModal(false);
 
   const onFinish = (values) => {
     console.log('Submitted values:', values);
-
-    const newLicense = {
-      key: licenses.length.toString(),
-      id: licenses.length,
-      name: values.name,
-    };
-
-    setLicenses([...licenses, newLicense]);
-
-    setIsModalOpened(false);
+    closeModal();
   };
 
   const columns = [
@@ -75,8 +57,8 @@ const Licenses = () => {
       render: (text, record) => {
         return (
           <div>
-            <AiTwotoneEdit style={{ color: "orange", fontSize: 20, marginRight:10 }} />
-            <FcCancel style={{ color: "orange", fontSize: 20 }}/>
+            <AiTwotoneEdit style={{ color: "orange", fontSize: 20, marginRight: 10 }} />
+            <FcCancel style={{ color: "orange", fontSize: 20 }} />
           </div>
         )
       }
@@ -86,13 +68,13 @@ const Licenses = () => {
   return (
     <div className={styles.wrapper}>
       <div>
-        <Button type="primary" onClick={showModal} style={{ backgroundColor: "limegreen" }}>
+        <Button type="primary" onClick={openModal} style={{ backgroundColor: "limegreen" }}>
           Crear Licencia
         </Button>
       </div>
 
       <Table
-        dataSource={licenses}
+        dataSource={initialLicenses}
         columns={columns}
         size={"large"}
         pagination={false}
@@ -101,7 +83,7 @@ const Licenses = () => {
 
       <Modal
         open={isModalOpened}
-        onCancel={handleCancel}
+        onCancel={closeModal}
         footer={null}
       >
         <Form onFinish={onFinish} layout="vertical">
